@@ -1,0 +1,40 @@
+body{
+    background: url("./assets/jumbo-background.png") no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: darkgrey;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Start Page */
+#start-banner{
+    position: relative;
+    margin-top: 20rem;
+    background: rgba(169,169,169, 0.9);
+}
+
+#start-button, #score-button {
+    margin: .6rem;
+}
+
+
+/* Quiz Card */
+#quiz-card {
+    position: relative;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+    height: 40rem;
+    background: rgba(255, 255, 255, 0.95);
+    display: none;
+}
+
+#button-group {
+    margin-top: 5rem;
+}
+
+.answer-button {
+    margin: 1rem;
+}
