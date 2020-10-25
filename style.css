@@ -20,6 +20,10 @@ body{
 
 
 /* Quiz Card */
+#question-image{
+    max-height: 1rem;
+}
+
 #quiz-card {
     position: relative;
     margin-top: 10rem;
@@ -31,8 +35,12 @@ body{
     display: none;
 }
 
+#question-text {
+    padding: 2rem;
+}
+
 #button-group {
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .answer-button {

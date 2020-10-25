@@ -6,7 +6,8 @@ var scoresBtn = document.getElementById("score-button");
 // Defining quiz and banner elements
 var startBanner = document.getElementById("start-banner");
 var quizCard = document.getElementById("quiz-card");
-
+var questionText = document.getElementById("question-text");
+var questionNumber = document.getElementById("question-number");
 
 // Define questions
 var questions = [
@@ -19,13 +20,13 @@ var questions = [
             'Nothing, it is an original Japanese word',
         ],
         correctAnswer: 0,
-        image: 
+        image: "./assets/question-1.png",
     }
-]
+];
 
 
 // Define Start of Quiz
-var currentQuestion = 0;
+var currentQuestionCount = 0;
 var correctAnswers = 0;
 var quizOver = false;
 
@@ -48,17 +49,31 @@ function timedCount() {
     t = setTimeout(function(){
         timedCount();
     },1000);
-}
+};
 
-
+// Shows quiz after Start button is pushed
 function startQuiz(){
-    $(startBanner).fadeOut(500, function(){
-        $(quizCard).fadeIn(500);
-        timedCount();
-        console.log("Check");
-    });
-}
+    startBanner.style.display = "none";
+    quizCard.style.display = "block";
+    timedCount();
+    showCurrentQuestion();
+    console.log("Check");
+};
 
+// 
+function showCurrentQuestion() {
+    var question = questions[currentQuestionCount].question;
+    var numberChoices = questions[currentQuestionCount].choices.length;
+    var choice;
+
+    questionText.innerText = question;
+    document.getElementById("question-img").src = questions[currentQuestionCount].image;
+    for (var i=0; i < numberChoices; i++) {
+        choice = questions[currentQuestionCount].choices[i];
+        document.getElementById("button"+i).innerText = choice;
+    }
+
+}
 
 
 
