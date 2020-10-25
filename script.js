@@ -2,15 +2,24 @@
 var startBtn = document.getElementById("start-button");
 var scoresBtn = document.getElementById("score-button");
 var answerBtns = document.getElementsByClassName("btn-block");
-
+var restartBtn = document.getElementById("restart-button");
+var saveBtn = document.getElementById("save-button");
+var playAgainBtn = document.getElementById("play-again-button");
 
 // Defining quiz and banner elements
 var startBanner = document.getElementById("start-banner");
 var quizCard = document.getElementById("quiz-card");
 var questionText = document.getElementById("question-text");
 var questionNumber = document.getElementById("question-number");
+var gameOverScreen = document.getElementById("game-over-card");
+var countdown = document.getElementById("timer");
+var scoreCount = document.getElementById("score");
+var finalScore = document.getElementById("final-score");
+var timeLeft = document.getElementById("final-timer");
+var scoreScreen = document.getElementById("score-card");
 
-// Define questions
+
+// Define questions and their respective answers
 var questions = [
     {
         question: '1. What does Japanese word "anime" derive from?',
@@ -134,7 +143,7 @@ var questions = [
         image: "./assets/question-1.png",
     },
     {
-        question: '12. Which of the following is not a part of the  " Nine Titans" from "Attack on Titan"?',
+        question: '12. Which of the following is not a part of the  "Nine Titans" from "Attack on Titan"?',
         choices: [
             'Armored Titan',
             'Female Titan',
@@ -156,7 +165,7 @@ var questions = [
         image: "./assets/question-1.png",
     },
     {
-        question: '14. Which of the following studios has NOT worked on a Fate series project?',
+        question: '14. Which of the following studios has NOT worked on a Fate series related project?',
         choices: [
             'A-1 Studios',
             'Shaft',
@@ -180,15 +189,13 @@ var questions = [
 ];
 
 
-// Define Start of Quiz
+// Start of Quiz set variables
 var currentQuestionCount = 0;
-var correctAnswers = 0;
-var quizOver = false;
+var score = 0;
 
 
-
-// Time countdown
-var c = 300;
+// Countdown Timer
+var c = 180;
 var t;
 
 function timedCount() {
@@ -198,45 +205,132 @@ function timedCount() {
     (minutes < 10 ? "0" + minutes : minutes) +
     ":" +
     (seconds < 10 ? "0" + seconds : seconds);
-    document.getElementById("timer").innerHTML = "Time left: " + result;
+    countdown.innerHTML = "Time left: " + result;
     
     c = c-1;
     t = setTimeout(function(){
         timedCount();
     },1000);
+
+    if (c === 0) {
+        gameOver();
+        clearTimeout(t);
+    }
 };
 
 
 // Shows quiz after Start button is pushed
 function startQuiz(){
+    var score = 0;
     startBanner.style.display = "none";
     quizCard.style.display = "block";
+    scoreCount.innerHTML = "Questions correct: " + score;
     timedCount();
     showCurrentQuestion();
 };
 
 
-// Shows current question
-function showCurrentQuestion() {
-    var question = questions[currentQuestionCount].question;
-    var numberChoices = questions[currentQuestionCount].choices.length;
-    var choice;
-
-    questionText.innerText = question;
-    document.getElementById("question-img").src = questions[currentQuestionCount].image;
-    for (var i=0; i < numberChoices; i++) {
-        choice = questions[currentQuestionCount].choices[i];
-        document.getElementById("button"+i).innerText = choice;
-    }
-    currentQuestionCount++;
+// Restarts the quiz
+function restartQuiz(){
+    score = 0;
+    c = 180;
+    currentQuestionCount = 0;
+    scoreScreen.style.display = "none";
+    gameOverScreen.style.display = "none";
+    quizCard.style.display = "block";
+    scoreCount.innerHTML = "Questions correct: " + score;
+    showCurrentQuestion();
+    timedCount();
 }
 
 
+// Shows current question and tracks current question number
+function showCurrentQuestion() {
+    if (currentQuestionCount < 15) {
+        var question = questions[currentQuestionCount].question;
+        var numberChoices = questions[currentQuestionCount].choices.length;
+        var choice;
+        questionText.innerText = question;
+        document.getElementById("question-img").src = questions[currentQuestionCount].image;
+        for (var i=0; i < numberChoices; i++) {
+            choice = questions[currentQuestionCount].choices[i];
+            document.getElementById("button"+i).innerText = choice;
+        }
+        checkQuestion();
+    }
+    else{
+        gameOver();
+    }
+}
 
 
+// Checks to see if the answer was correct and increases score if correct, deducts time if incorrect
+var score = 0
+function checkQuestion(){
+    for (var i=0 ; i < answerBtns.length ; i++){
+        (function (index){
+            answerBtns[index].onclick = function(){
+                if (index === questions[currentQuestionCount-2].correctAnswer){
+                    score++;
+                    scoreCount.innerHTML = "Questions correct: " + score;
+                    correctAnswer();
+                }
+                else {
+                    c=c-10;
+                    incorrectAnswer();
+                };
+            };
+        })(i);
+    };
+    currentQuestionCount++;
+};
 
-// Event Listener for Start button
+function correctAnswer(){
+
+};
+
+function incorrectAnswer(){
+
+};
+
+
+// Game Over screen
+function gameOver(){
+    quizCard.style.display = "none";
+    gameOverScreen.style.display = "block";
+    finalScore.innerHTML = "Final Score: " + score + " of 15!";
+    var minutes = parseInt(c / 60) % 60;
+    var seconds = c % 60;
+    var result =
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (seconds < 10 ? "0" + seconds : seconds);
+    timeLeft.innerHTML = "Time left: " + result;
+    clearTimeout(t);
+}
+
+
+// Scores screen
+function showScore(){
+    startBanner.style.display = "none";
+    scoreScreen.style.display = "block";
+}
+
+
+// Save Score
+function saveScore(){
+    gameOverScreen.style.display = "none";
+    scoreScreen.style.display = "block";
+    
+}
+
+
+// Event Listener for all buttons
 startBtn.addEventListener("click", startQuiz);
+restartBtn.addEventListener("click", restartQuiz);
 for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener('click', showCurrentQuestion);
 }
+scoresBtn.addEventListener("click", showScore);
+saveBtn.addEventListener("click", saveScore);
+playAgainBtn.addEventListener("click",restartQuiz);

@@ -14,7 +14,7 @@ body{
     background: rgba(169,169,169, 0.9);
 }
 
-#start-button, #score-button {
+#start-button, #score-button, #restart-button, #save-button {
     margin: .6rem;
 }
 
@@ -29,7 +29,7 @@ body{
     margin-top: 2rem;
 }
 
-#quiz-card {
+#quiz-card{
     position: relative;
     margin-top: 10rem;
     margin-left: auto;
@@ -54,4 +54,45 @@ body{
 
 .answer-button {
     margin: 1rem;
+}
+
+#game-over-card {
+    position: relative;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+    height: 40rem;
+    background: rgba(255, 255, 255, 0.95);
+    display: none;
+}
+
+#game-over-image{
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-height: 200px;
+    width: auto;
+}
+
+#final-score, #final-timer {
+    font-size: 2rem;
+}
+
+#input-whole {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+#score-card {
+    position: relative;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+    height: 40rem;
+    background: rgba(255, 255, 255, 0.95);
+    display: none;
 }

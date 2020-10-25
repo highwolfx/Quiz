@@ -16,7 +16,7 @@
         <p class="lead d-flex justify-content-center">This is a timed and scored multiple choice quiz that tests your knowledge on anime! Click the Start button to get started.</p>
         <section class="d-flex justify-content-center">
             <a class="btn btn-primary btn-lg" href="#" role="button" id="start-button">Start</a>
-            <a class="btn btn-secondary btn-lg" href="#" role="button" id="score-button">View High Scores</a>
+            <a class="btn btn-secondary btn-lg" href="#" role="button" id="score-button">View Scores</a>
         </section>
     </div>
     <div class="card" id="quiz-card">
@@ -28,22 +28,48 @@
         <h3 class="card-text" id="question-text"></h3>
         <div class="align-bottom" id="button-group">
           <section class="d-flex justify-content-center answer-button">
-            <button type="button" class="btn btn-primary btn-block" id="button0"></button>
+            <button type="button" class="btn btn-primary btn-block" id="button0" value="0"></button>
           </section>
           <section class="d-flex justify-content-center answer-button">
-            <button type="button" class="btn btn-primary btn-block" id="button1"></button>
+            <button type="button" class="btn btn-primary btn-block" id="button1" value="1"></button>
           </section>
           <section class="d-flex justify-content-center answer-button">
-            <button type="button" class="btn btn-primary btn-block" id="button2"></button>
+            <button type="button" class="btn btn-primary btn-block" id="button2" value="2"></button>
           </section>
           <section class="d-flex justify-content-center answer-button">
-            <button type="button" class="btn btn-primary btn-block" id="button3"></button>
+            <button type="button" class="btn btn-primary btn-block" id="button3" value="3"></button>
           </section>
         </div>                
       </div>
     </div>
-
-
+    <div class="card" id="game-over-card">
+      <img src="./assets/game-over-img.jpg" class="card-img-top" id = "game-over-image" alt="Inugami Korone Happy">
+      <div class="card-body">
+        <h3 class="display-4 d-flex justify-content-center"> Game Over!</h3>
+        <hr>
+        <h3 class="display-4 d-flex justify-content-center" id="final-timer"></h3>
+        <h3 class="display-4 d-flex justify-content-center" id="final-score"></h3>
+      </div>
+      <div class="input-group input-group-lg" id="input-whole">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Initials here:</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+      </div>
+      <section class="d-flex justify-content-center">
+        <a class="btn btn-primary btn-lg" href="#" role="button" id="restart-button">Restart</a>
+        <a class="btn btn-secondary btn-lg" href="#" role="button" id="save-button">Save Score</a>
+      </section>
+    </div>
+    <div class="card" id="score-card">
+      <div class="card-body">
+        <h3 class="display-4 d-flex justify-content-center"> Game Over!</h3>
+        <hr>
+      </div>
+      <section class="d-flex justify-content-center">
+        <a class="btn btn-primary btn-lg" href="#" role="button" id="play-again-button">Play Again</a>
+      </section>
+    </div>
 
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
