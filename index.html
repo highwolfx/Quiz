@@ -10,22 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
 
+
   <body>
+    <!-- Welcome Screen -->
     <div class="jumbotron" id="start-banner">
-        <h1 class="display-4 d-flex justify-content-center">Anime Quiz</h1>
+        <!-- Title -->
+      <h1 class="display-4 d-flex justify-content-center">Anime Quiz</h1>
         <p class="lead d-flex justify-content-center">This is a timed and scored multiple choice quiz that tests your knowledge on anime! Click the Start button to get started.</p>
+        
+        <!-- Start buttons -->
         <section class="d-flex justify-content-center">
             <a class="btn btn-primary btn-lg" href="#" role="button" id="start-button">Start</a>
             <a class="btn btn-secondary btn-lg" href="#" role="button" id="score-button">View Scores</a>
         </section>
     </div>
+
+
+    <!-- Quiz Screen -->
     <div class="card" id="quiz-card">
+      <!-- Image element -->
       <img src="" class="card-img-top" id = "question-img" alt="...">
+      
+      <!-- Timer, Score Heading -->
       <div class="card-body">
         <h3 class="display-4 d-flex justify-content-center" id="timer"></h3>
         <h3 class="display-4 d-flex justify-content-center" id="score"></h3>
         <hr>
+        
+        <!-- Question -->
         <h3 class="card-text" id="question-text"></h3>
+
+        <!-- Answer Selections -->
         <div class="align-bottom" id="button-group">
           <section class="d-flex justify-content-center answer-button">
             <button type="button" class="btn btn-primary btn-block" id="button0" value="0"></button>
@@ -42,8 +57,14 @@
         </div>                
       </div>
     </div>
+
+
+    <!-- Game Over Screen -->
     <div class="card" id="game-over-card">
+      <!-- Image element -->
       <img src="./assets/game-over-img.jpg" class="card-img-top" id = "game-over-image" alt="Inugami Korone Happy">
+      
+      <!-- Game Over Text -->
       <div class="card-body">
         <h3 class="display-4 d-flex justify-content-center"> Game Over!</h3>
         <hr>
@@ -52,22 +73,32 @@
           <a class="btn btn-success" href="#" role="button" id="final-score-button">See Score</a>
         </section>
       </div>
+
+      <!-- Initial Input -->
       <div class="input-group input-group-lg" id="input-whole">
         <div class="input-group-prepend">
           <span class="input-group-text">Initials here:</span>
         </div>
         <input type="text" class="form-control" aria-label="Sizing example input"  name = "initials-input" id="initials-input" aria-describedby="inputGroup-sizing-lg">
       </div>
+
+      <!-- Restart and Save Buttons -->
       <section class="d-flex justify-content-center">
         <a class="btn btn-primary btn-lg" href="#" role="button" id="restart-button">Restart</a>
         <a class="btn btn-secondary btn-lg" href="#" role="button" id="save-button">Save Score</a>
       </section>
     </div>
+
+
+    <!-- Scoreboard -->
     <div class="card" id="score-card">
+      <!-- Heading -->
       <div class="card-body">
         <h3 class="display-4 d-flex justify-content-center"> Scoreboard</h3>
         <hr>
       </div>
+
+      <!-- Score Table -->
       <table class="table">
         <thead>
           <tr>
@@ -86,6 +117,8 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- Play Again button -->
       <section class="d-flex justify-content-center">
         <a class="btn btn-primary btn-lg" href="#" role="button" id="play-again-button">Play Again</a>
       </section>

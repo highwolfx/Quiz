@@ -43,7 +43,7 @@ var questions = [
             'Otogo Manga Calendar',
         ],
         correctAnswer: 3,
-        image: "./assets/question-1.png",
+        image: "./assets/question-2.png",
     },
     {
         question: '3. According to the website "MyAnimeList," what is the most viewed series of all time?',
@@ -54,7 +54,7 @@ var questions = [
             'Fullmetal Alchemist: Brotherhood',
         ],
         correctAnswer: 2,
-        image: "./assets/question-1.png",
+        image: "./assets/question-3.png",
     },
     {
         question: '4. Which of the following is the longest running series of the bunch by episode count?',
@@ -65,7 +65,7 @@ var questions = [
             'Fairy Tail',
         ],
         correctAnswer: 1,
-        image: "./assets/question-1.png",
+        image: "./assets/question-4.jpg",
     },
     {
         question: '5. According to "MyAnimeList," which of the following series is the highest rated by users?',
@@ -76,7 +76,7 @@ var questions = [
             'Steins;Gate',
         ],
         correctAnswer: 1,
-        image: "./assets/question-1.png",
+        image: "./assets/question-5.png",
     },
     {
         question: '6. Which of the following movies is the highest grossing anime film of all time?',
@@ -87,7 +87,7 @@ var questions = [
             'Your Name (Kimi no Na wa)',
         ],
         correctAnswer: 3,
-        image: "./assets/question-1.png",
+        image: "./assets/question-6.jpg",
     },
     {
         question: '7. Of the following animation studios, which one has the most number of employees?',
@@ -98,7 +98,7 @@ var questions = [
             'Ufotable',
         ],
         correctAnswer: 1,
-        image: "./assets/question-1.png",
+        image: "./assets/question-7.jpg",
     },
     {
         question: '8. What is the approximate net worth (USD) of the anime industry as a whole in 2018?',
@@ -109,7 +109,7 @@ var questions = [
             '$5 billion',
         ],
         correctAnswer: 0,
-        image: "./assets/question-1.png",
+        image: "./assets/question-8.png",
     },
     {
         question: '9. Of the following, which are not a "Servant" class in the Fate series?',
@@ -120,7 +120,7 @@ var questions = [
             'Caster',
         ],
         correctAnswer: 2,
-        image: "./assets/question-1.png",
+        image: "./assets/question-9.png",
     },
     {
         question: '10. Which series from the following is not a "Weekly Shounen Jump" title?',
@@ -131,7 +131,7 @@ var questions = [
             'Dr. Stone',
         ],
         correctAnswer: 2,
-        image: "./assets/question-1.png",
+        image: "./assets/question-10.png",
     },
     {
         question: '11. Which of the following is not a game that appears in the story of "Sword Art Online" series?',
@@ -142,7 +142,7 @@ var questions = [
             'Sword Art Online',
         ],
         correctAnswer: 0,
-        image: "./assets/question-1.png",
+        image: "./assets/question-11.jpg",
     },
     {
         question: '12. Which of the following is not a part of the  "Nine Titans" from "Attack on Titan"?',
@@ -153,7 +153,7 @@ var questions = [
             'Towering Titan',            
         ],
         correctAnswer: 3,
-        image: "./assets/question-1.png",
+        image: "./assets/question-12.png",
     },
     {
         question: '13. Which of the following musicians have NOT worked with the animation studio Ufotable?',
@@ -164,7 +164,7 @@ var questions = [
             'Aimer',
         ],
         correctAnswer: 1,
-        image: "./assets/question-1.png",
+        image: "./assets/question-13.png",
     },
     {
         question: '14. Which of the following studios has NOT worked on a Fate series related project?',
@@ -175,7 +175,7 @@ var questions = [
             'TROYCA',
         ],
         correctAnswer: 2,
-        image: "./assets/question-1.png",
+        image: "./assets/question-14.png",
     },
     {
         question: '15. What is a common phrase that is spoken in anime when the characters are about to eat?',
@@ -186,7 +186,7 @@ var questions = [
             'Okaeri!',
         ],
         correctAnswer: 2,
-        image: "./assets/question-1.png",
+        image: "./assets/question-15.png",
     },
 ];
 
@@ -242,7 +242,11 @@ function restartQuiz(){
     gameOverScreen.style.display = "none";
     quizCard.style.display = "block";
     scoreCount.innerHTML = "Questions correct: " + score;
-    document.getElementById("final-score").remove();
+    if(document.getElementById("final-score") === null){
+
+    } else{
+        document.getElementById("final-score").remove();
+    }
     scoreReveal.style.display = "block";
     showCurrentQuestion();
     timedCount();

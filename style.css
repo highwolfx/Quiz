@@ -1,3 +1,4 @@
+/* Background */
 body{
     background: url("./assets/jumbo-background.png") no-repeat center center fixed;
     background-repeat: no-repeat;
@@ -5,6 +6,7 @@ body{
     background-color: darkgrey;
     font-family: 'Roboto', sans-serif;
 }
+
 
 
 /* Start Page */
@@ -17,6 +19,7 @@ body{
 #start-button, #score-button, #restart-button, #save-button {
     margin: .6rem;
 }
+
 
 
 /* Quiz Card */
@@ -40,6 +43,7 @@ body{
     display: none;
 }
 
+/* Text formatting */
 #timer, #score {
     font-size: 2rem;
 }
@@ -48,6 +52,7 @@ body{
     padding: 1rem;
 }
 
+/* Button formatting */
 #button-group {
     margin-top: 1rem;
 }
@@ -56,6 +61,9 @@ body{
     margin: 1rem;
 }
 
+
+
+/* Game Over Screen */
 #game-over-card {
     position: relative;
     margin-top: 10rem;
@@ -76,6 +84,7 @@ body{
     width: auto;
 }
 
+/* Text Formatting */
 #final-score{
     font-size: 2rem;
 }
@@ -95,6 +104,9 @@ body{
     padding-bottom: 1rem;
 }
 
+
+
+/* Scorecard formatting */
 #score-card {
     position: relative;
     margin-top: 10rem;
