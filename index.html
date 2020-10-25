@@ -48,13 +48,15 @@
         <h3 class="display-4 d-flex justify-content-center"> Game Over!</h3>
         <hr>
         <h3 class="display-4 d-flex justify-content-center" id="final-timer"></h3>
-        <h3 class="display-4 d-flex justify-content-center" id="final-score"></h3>
+        <section class="d-flex justify-content-center" id="final-score-here">
+          <a class="btn btn-success" href="#" role="button" id="final-score-button">See Score</a>
+        </section>
       </div>
       <div class="input-group input-group-lg" id="input-whole">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-lg">Initials here:</span>
+          <span class="input-group-text">Initials here:</span>
         </div>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <input type="text" class="form-control" aria-label="Sizing example input"  name = "initials-input" id="initials-input" aria-describedby="inputGroup-sizing-lg">
       </div>
       <section class="d-flex justify-content-center">
         <a class="btn btn-primary btn-lg" href="#" role="button" id="restart-button">Restart</a>
@@ -63,9 +65,27 @@
     </div>
     <div class="card" id="score-card">
       <div class="card-body">
-        <h3 class="display-4 d-flex justify-content-center"> Game Over!</h3>
+        <h3 class="display-4 d-flex justify-content-center"> Scoreboard</h3>
         <hr>
       </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Initials</th>
+            <th scope="col">Score</th>
+            <th scope="col">Time Remaining</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td id="username-display"></td>
+            <td id="score-display"></td>
+            <td id="time-display"></td>
+          </tr>
+        </tbody>
+      </table>
       <section class="d-flex justify-content-center">
         <a class="btn btn-primary btn-lg" href="#" role="button" id="play-again-button">Play Again</a>
       </section>

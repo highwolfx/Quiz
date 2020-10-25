@@ -5,6 +5,8 @@ var answerBtns = document.getElementsByClassName("btn-block");
 var restartBtn = document.getElementById("restart-button");
 var saveBtn = document.getElementById("save-button");
 var playAgainBtn = document.getElementById("play-again-button");
+var scoreReveal = document.getElementById("final-score-button");
+
 
 // Defining quiz and banner elements
 var startBanner = document.getElementById("start-banner");
@@ -147,10 +149,10 @@ var questions = [
         choices: [
             'Armored Titan',
             'Female Titan',
-            'Towering Titan',
             'Dancing Titan',
+            'Towering Titan',            
         ],
-        correctAnswer: 2,
+        correctAnswer: 3,
         image: "./assets/question-1.png",
     },
     {
@@ -180,10 +182,10 @@ var questions = [
         choices: [
             'Rub a dub dub, thanks for the grub!',
             'Tadaima!',
-            'Okaeri!',
             'Itadakimasu!',
+            'Okaeri!',
         ],
-        correctAnswer: 3,
+        correctAnswer: 2,
         image: "./assets/question-1.png",
     },
 ];
@@ -192,6 +194,7 @@ var questions = [
 // Start of Quiz set variables
 var currentQuestionCount = 0;
 var score = 0;
+var totalScore = 0;
 
 
 // Countdown Timer
@@ -212,7 +215,7 @@ function timedCount() {
         timedCount();
     },1000);
 
-    if (c === 0) {
+    if (c < 0) {
         gameOver();
         clearTimeout(t);
     }
@@ -239,6 +242,8 @@ function restartQuiz(){
     gameOverScreen.style.display = "none";
     quizCard.style.display = "block";
     scoreCount.innerHTML = "Questions correct: " + score;
+    document.getElementById("final-score").remove();
+    scoreReveal.style.display = "block";
     showCurrentQuestion();
     timedCount();
 }
@@ -273,11 +278,9 @@ function checkQuestion(){
                 if (index === questions[currentQuestionCount-2].correctAnswer){
                     score++;
                     scoreCount.innerHTML = "Questions correct: " + score;
-                    correctAnswer();
                 }
                 else {
                     c=c-10;
-                    incorrectAnswer();
                 };
             };
         })(i);
@@ -285,43 +288,64 @@ function checkQuestion(){
     currentQuestionCount++;
 };
 
-function correctAnswer(){
-
-};
-
-function incorrectAnswer(){
-
-};
-
 
 // Game Over screen
 function gameOver(){
     quizCard.style.display = "none";
     gameOverScreen.style.display = "block";
-    finalScore.innerHTML = "Final Score: " + score + " of 15!";
-    var minutes = parseInt(c / 60) % 60;
-    var seconds = c % 60;
-    var result =
-    (minutes < 10 ? "0" + minutes : minutes) +
-    ":" +
-    (seconds < 10 ? "0" + seconds : seconds);
+    // Convert seconds left to min:sec
+        var minutes = parseInt(c / 60) % 60;
+        var seconds = c % 60;
+        var result =
+        (minutes < 10 ? "0" + minutes : minutes) +
+        ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
     timeLeft.innerHTML = "Time left: " + result;
     clearTimeout(t);
 }
 
 
-// Scores screen
+// Updates score after checking last question, then shows score
+function refreshScore(){
+    scoreReveal.style.display = "none";
+    totalScore = score;
+    var newNode = document.createElement('h3');
+    newNode.className = "display-4 d-flex justify-content-center";
+    newNode.setAttribute("id", "final-score");
+    newNode.innerHTML = "Final Score: " + totalScore + " of 15!";
+    document.getElementById("final-score-here").appendChild(newNode);
+}
+
+
+// Shows score screen
 function showScore(){
+    gameOverScreen.style.display = "none";
     startBanner.style.display = "none";
     scoreScreen.style.display = "block";
+    var lastScore = JSON.parse(localStorage.getItem("Last Score"));
+    document.getElementById("username-display").textContent = lastScore.name;
+    document.getElementById("score-display").textContent = lastScore.score;
+    document.getElementById("time-display").textContent = lastScore.timeLeft;
 }
 
 
 // Save Score
 function saveScore(){
-    gameOverScreen.style.display = "none";
-    scoreScreen.style.display = "block";
-    
+    var nameInput = document.querySelector("#initials-input");
+    // Convert seconds left to min:sec
+    var minutes = parseInt(c / 60) % 60;
+    var seconds = c % 60;
+    var result =
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (seconds < 10 ? "0" + seconds : seconds); 
+    var completeScore = {
+        name: nameInput.value,
+        score: score,
+        timeLeft: result
+    };
+    localStorage.setItem("Last Score", JSON.stringify(completeScore));
+    showScore();
 }
 
 
@@ -334,3 +358,4 @@ for (var i = 0; i < answerBtns.length; i++) {
 scoresBtn.addEventListener("click", showScore);
 saveBtn.addEventListener("click", saveScore);
 playAgainBtn.addEventListener("click",restartQuiz);
+scoreReveal.addEventListener("click",refreshScore);

@@ -76,7 +76,16 @@ body{
     width: auto;
 }
 
-#final-score, #final-timer {
+#final-score{
+    font-size: 2rem;
+}
+
+#final-score-button {
+    display: block;
+    margin-left: 2rem;
+}
+
+#final-timer {
     font-size: 2rem;
 }
 
