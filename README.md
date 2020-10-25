@@ -45,10 +45,12 @@ Both the earlier "View Score" from the Welcome page and the "Save Score" button 
     <img alt="scoreboard example" src="https://raw.githubusercontent.com/highwolfx/Quiz/main/assets/scoreboard-screenshot.jpg">
 </p>
 
+The answer key can be found [here](answer-key.txt).
+
 
 ## License
 
-Licensed under the [MIT](LICENSE.txt) license.
+Licensed under the [MIT license](LICENSE.txt).
 
 
 ## Credits
